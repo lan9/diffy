@@ -33,7 +33,7 @@ class ApiController @Inject()(
     JoinedEndpoint: JoinedEndpoint,
     includeWeights: Boolean,
     excludeNoise: Boolean
-  ) =
+  ): Map[String, Map[String, Any]] =
     Map(
       "endpoint" -> Renderer.endpoint(JoinedEndpoint.endpoint),
       "fields" ->
@@ -98,7 +98,7 @@ class ApiController @Inject()(
             "requests" ->
               Renderer.differenceResults(
                 drs,
-                req.params.getBooleanOrElse("include_request", false)
+                req.params.getBooleanOrElse("include_request", true)
               )
           )
         }

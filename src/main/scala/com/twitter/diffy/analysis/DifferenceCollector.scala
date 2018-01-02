@@ -23,7 +23,7 @@ object DifferenceAnalyzer {
     )()
   )
 
-  def normalizeEndpointName(name: String) = name.replace("/", "-")
+  def normalizeEndpointName(name: String): String = name.replace("/", "-")
 }
 
 case class Field(endpoint: String, prefix: String)

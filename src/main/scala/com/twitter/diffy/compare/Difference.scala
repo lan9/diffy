@@ -142,7 +142,7 @@ object Difference {
     }
 
   def diffSet[A](left: Set[A], right: Set[A]): TerminalDifference =
-    if(left == right) NoDifference(left) else SetDifference(left -- right, right -- left)
+    if (left == right) NoDifference(left) else SetDifference(left -- right, right -- left)
 
   def diffSeq[A](left: Seq[A], right: Seq[A]): SeqDifference = {
     val leftNotRight = left diff right

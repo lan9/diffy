@@ -61,7 +61,7 @@ trait DifferenceProxy {
   private[this] lazy val multicastHandler =
     new SequentialMulticastService(Seq(primary.client, candidate.client, secondary.client))
 
-  def proxy = new Service[Req, Rep] {
+  def proxy: Service[Req, Rep] = new Service[Req, Rep] {
     override def apply(req: Req): Future[Rep] = {
       val rawResponses =
         multicastHandler(req) respond {
@@ -95,7 +95,7 @@ trait DifferenceProxy {
     }
   }
 
-  def clear() = {
+  def clear(): Future[Unit] = {
     lastReset = Time.now
     analyzer.clear()
   }
